@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos por Categoría</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header-container">
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="img/logo.png" alt="Logo Montero Gaming" class="logo">
+            </a>
+        </div>
+        <div class="search-container">
+            <input type="text" id="search-bar" placeholder="Buscar productos...">
+            <button id="search-button">🔍</button>
+        </div>
+        <a href="carrito.html" id="icono-carrito">
+            <img src="img/carrito.png" alt="Carrito de Compras">
+            <span id="carrito-contador">0</span>
+        </a>
+    </header>
+    
+    <section id="categoria-productos">
+        <h2 id="titulo-categoria"></h2>
+        <div class="productos" id="productos-container"></div>
+    </section>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const categoria = urlParams.get("categoria");
+            const tituloCategoria = document.getElementById("titulo-categoria");
+            const productosContainer = document.getElementById("productos-container");
+            
+            const productos = {
+                teclados: [
+                    { nombre: "TECLADO HYPERX ALLOY ORIGINS | MECANICO | SW-BLUE | RGB", imagen: "productos/teclado1.jpg", precio: "S/288.50" },
+                    { nombre: "TECLADO RAZER HUNTSMAN MINI | OPTOMECANICO | SW- RED | RGB | BLANCO", imagen: "productos/teclado2.jpg", precio: "S/507.90" },
+                    { nombre: "TECLADO LOGITECH PRODIGY G213 | MEMBRANA | RGB", imagen: "productos/teclado3.jpg", precio: "S/210.90" },
+                    { nombre: "TECLADO REDRAGON FIZZ PRO K616 | INGLES | INALAMBRICO | MECANICO | SW-RED | RGB | BLANCO-ROSADO", imagen: "productos/teclado5.jpg", precio: "S/212.50" },  
+                    { nombre: "TECLADO REDRAGON HORUS TKL K621 | INALAMBRICO | MECANICO | LOW PROFILE | SW-BLUE | RGB | NEGRO", imagen: "productos/teclado4.jpg", precio: "S/316.90" },
+                    { nombre: "TECLADO LOGITECH G513 CARBON | MECANICO | SW-GX BROWN | RGB", imagen: "productos/teclado6.jpg", precio: "S/ 518.90" },
+                    { nombre: "TECLADO RAZER BLACKWIDOW V4 | MECANICO | SW-GREEN | RGB | NEGRO", imagen: "productos/teclado7.jpg", precio: "S/733.90" },
+                    { nombre: "TECLADO HYPERX ALLOY ORIGINS CORE | MECANICO | SW-RED | RGB", imagen: "productos/teclado8.jpg", precio: "S/403.90" }
+
+                ],
+                mouses: [
+                    { nombre: "MOUSE RAZER COBRA | 8,500 DPI | RGB | NEGRO", imagen: "productos/mouse1.jpg", precio: "S/157.90" },
+                    { nombre: "MOUSE LOGITECH G305 | INALAMBRICO | 12,000 DPI | BLANCO", imagen: "productos/mouse2.jpg", precio: "S/155.50" },
+                    { nombre: "MOUSE REDRAGON COBRA CHROMA M711 | 10,000 DPI | RGB | NEGRO", imagen: "productos/mouse3.jpg",precio: "S/89.90"},
+                    { nombre: "MOUSE LOGITECH G502 HERO | 16,000 DPI | RGB", imagen: "productos/mouse4.jpg",precio: "S/209.90"},
+                    { nombre: "MOUSE REDRAGON K1NG PRO (4K HZ) M916-PRO-4K | INALAMBRICO | 26,000 DPI | NEGRO", imagen: "productos/mouse5.jpg",precio: "S/265.90"},
+                    { nombre: "MOUSE LOGITECH GPRO X SUPERLIGHT 2 | INALAMBRICO | 32,000 DPI | BLANCO", imagen: "productos/mouse6.jpg",precio: "S/519.50"},
+                    { nombre: "MOUSE RAZER BASILISK V3 CHROMA | 26,000 DPI | RGB | NEGRO", imagen: "productos/mouse7.jpg",precio: "S/209.90"},
+                    { nombre: "MOUSE RAZER VIPER V2 PRO | INALAMBRICO | 30.000DPI | BLANCO", imagen: "productos/mouse8.jpg",precio: "S/554.50"},
+
+                ],
+                auriculares: [
+                    { nombre: "AUDIFONO LOGITECH G733 | INALAMBRICO | RGB | AZUL", imagen: "productos/auriculares1.jpg", precio: "S/546.50" },
+                    { nombre: "AUDIFONO REDRAGON ZEUS X H510-WL | INALAMBRICO | 7.1 | RGB", imagen: "productos/auriculares2.jpg", precio: "S/272.90" },
+                    { nombre: "AUDIFONO RAZER BLACKSHARK V2 X | 3.5MM | 7.1 | GREEN", imagen: "productos/auriculares3.jpg", precio: "S/145.90" },
+                    { nombre: "AUDIFONO ASTRO A10 G2 | 3.5MM | ESTEREO | MENTA", imagen: "productos/auriculares4.jpg", precio: "S/222.90" },
+                    { nombre: "AUDIFONO REDRAGON IRE PRO H848 | BLUETOOTH- INALAMBRICO- USB | 7.1 | ROSADO", imagen: "productos/auriculares5.jpg", precio: "S/204.90" },
+                    { nombre: "AUDIFONO ASTRO A50 | INALAMBRICO | 7.1 | NEGRO", imagen: "productos/auriculares6.jpg", precio: "S/1017.50" },
+                    { nombre: "AUDIFONO LOGITECH G435 | BLUETOOTH | ESTEREO | BLANCO", imagen: "productos/auriculares7.jpg", precio: "S/279.90" },
+                    { nombre: "AUDIFONO RAZER BARRACUDA X 2022 | INALAMBRICO | 7.1 | NEGRO", imagen: "productos/auriculares8.jpg", precio: "S/370.90" },
+                ],
+                monitores: [
+                    { nombre: "MONITOR LED 27 MSI MAG 27C6F CURVO 1920x1080 HDMI DP 0.5MS/180Hz/AMD FREESYNC", imagen: "productos/monitor1.jpg", precio: "S/611.72" },
+                    { nombre: "MONITOR LED 32 SAMSUNG LS32CG552ELXPE ODYSSEY G5 CURVO 2560x1440 HDMI DP 1MS/165Hz/FREESYNC", imagen: "productos/monitor2.jpg", precio: "S/1249.55" },
+                    { nombre: "MONITOR LED 31.5 LG 32GS75Q-B ULTRAGEAR 2560x1440 HDMI DP 1MS/180Hz/AMD FREESYNC/COMPATIBLE NVIDIA-SYNC", imagen: "productos/monitor3.jpg", precio: "S/1380.10" },
+                    { nombre: "MONITOR LED 23.8 TEROS TE-2401S CURVO 1920x1080 HDMI VGA 5MS/100Hz/AMD FREESYNC", imagen: "productos/monitor4.jpg", precio: "S/283.48" },
+                    { nombre: "MONITOR LED 27 ASUS TUF GAMING VG279Q3A 1920x1080 HDMI DP 1MS/180Hz/AMD FREESYNC PREMIUM/COMPATIBLE NVIDIA-SYNC", imagen: "productos/monitor5.jpg", precio: "S/744.14" },
+                    { nombre: "MONITOR OLED 49 SAMSUNG LS49CG930SLXPE CURVO 5120x1440 HDMI DP 0.03MS/240Hz/FREESYNC PREMIUM PRO/COMPATIBLE NVIDIA G-SYNC", imagen: "productos/monitor6.jpg", precio: "S/5110.10" },
+                ]
+            };
+            
+            if (productos[categoria]) {
+                tituloCategoria.textContent = "Categoría: " + categoria.charAt(0).toUpperCase() + categoria.slice(1);
+                productos[categoria].forEach(prod => {
+                    const productoDiv = document.createElement("div");
+                    productoDiv.classList.add("producto");
+                    productoDiv.innerHTML = `
+                        <img src="${prod.imagen}" alt="${prod.nombre}">
+                        <h3>${prod.nombre}</h3>
+                        <div class="precio">${prod.precio}</div>
+                        <button onclick="agregarAlCarrito('${prod.nombre}')">Agregar al carrito</button>
+                    `;
+                    productosContainer.appendChild(productoDiv);
+                });
+            } else {
+                tituloCategoria.textContent = "Categoría no encontrada";
+            }
+        });
+    </script>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="img/logo.png" alt="Logo">
+                <p>¡Los expertos en Tecnología!</p>
+                <a href="mailto:correo@tutienda.com">
+                    📩 monterogaming7@gmail.com
+                </a>
+            </div>
+    
+            <div class="footer-links">
+                <div>
+                    <h3>INFORMACIÓN</h3>
+                    <a href="#">Nuestras Tiendas</a>
+                    <a href="#">Sobre Nosotros</a>
+                    <a href="#">Guía para padres</a>
+                </div>
+                <div>
+                    <h3>CLIENTES</h3>
+                    <a href="#">Garantía</a>
+                    <a href="#">Locales Autorizados</a>
+                    <a href="#">Mi cuenta</a>
+                    <a href="#">Libro de reclamaciones</a>
+                </div>
+                <div>
+                    <h3>POLÍTICAS</h3>
+                    <a href="#">Términos y Condiciones</a>
+                    <a href="#">Política de Cookies</a>
+                    <a href="#">Política de Privacidad</a>
+                </div>
+            </div>
+    
+            <div class="footer-map">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7803.612490670372!2d-77.0482577!3d-12.0568483!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c8c6a3c4c7fb%3A0xc430f8381598c595!2sMM%20STORE%20PERU!5e0!3m2!1ses!2spe!4v1740441196573!5m2!1ses!2spe"
+                    width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    
+        <div class="footer-social">
+            <p>Síguenos en:</p>
+            <a href="#"><img src="img/fblogo.png" alt="Facebook"></a>
+            <a href="#"><img src="img/tiktoklogo.png" alt="TikTok"></a>
+            <a href="#"><img src="img/iglogo.png" alt="Instagram"></a>
+            <a href="#"><img src="img/ytlogo.png" alt="YouTube"></a>
+            <a href="#"><img src="img/wsplogo.png" alt="WhatsApp"></a>
+        </div>
+    </footer>
+</body>
+</html>

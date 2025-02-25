@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Montero Gaming</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header-container">
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="img/logo.png" alt="Logo Montero Gaming" class="logo">
+            </a>
+        </div>
+        <div class="search-container">
+            <input type="text" id="search-bar" placeholder="Buscar productos...">
+            <button id="search-button">🔍</button>
+        </div>
+        <a href="carrito.html" id="icono-carrito">
+            <img src="img/carrito.png" alt="Carrito de Compras">
+            <span id="carrito-contador">0</span>
+        </a>
+    </header>
+    <div class="banner-container">
+        <img src="img/banner.jpg" alt="Banner principal" class="banner-img">
+    </div>
+    
+    <section id="perifericos">
+        <h2 class="subtitulo rgb-text">Periféricos Gamer</h2>
+        <div class="productos-container">
+            <div class="productos">
+                <div class="producto" id="teclado">
+                    <img src="img/teclado.jpg" alt="Teclado Mecánico RGB">
+                    <h3>Teclado Mecánico RGB</h3>
+                    <button onclick="window.location.href='categorias.html?categoria=teclados'">Ver más</button>
+                </div>
+                
+                <div class="producto" id="mouse">
+                    <img src="img/mouse.jpg" alt="Mouse Gamer RGB">
+                    <h3>Mouse Gamer RGB</h3>
+                    <button onclick="window.location.href='categorias.html?categoria=mouses'">Ver más</button>
+                </div>
+                
+                <div class="producto" id="auriculares">
+                    <img src="img/audifonos.jpg" alt="Auriculares Gamer">
+                    <h3>Auriculares Gamer</h3>
+                    <button onclick="window.location.href='categorias.html?categoria=auriculares'">Ver más</button>
+                </div>
+                
+                <div class="producto" id="monitor">
+                    <img src="img/monitor.jpg" alt="Monitor Gaming 144Hz">
+                    <h3>Monitores Gaming</h3>
+                    <button onclick="window.location.href='categorias.html?categoria=monitores'">Ver más</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="promo-banner">
+        <a href="https://www.intel.la/content/www/xl/es/products/details/processors/core-ultra.html" target="_blank">
+            <img src="img/promo.png" alt="Oferta Especial" class="promo-img">
+        </a>
+    </div>
+
+    <h2 class="subtitulo rgb-text">Arma tu Super PC</h2>
+    <div class="productos-container">
+        <div class="productos">
+            <div class="producto">
+                <img src="img/procesador.jpg" alt="Procesador">
+                <h3>Procesador Gaming</h3>
+                <button class="boton">Ver más</button>
+            </div>
+            <div class="producto">
+                <img src="img/gpu.jpg" alt="Tarjeta de Video">
+                <h3>Tarjeta de Video</h3>
+                <button class="boton">Ver más</button>
+            </div>
+            <div class="producto">
+                <img src="img/ram.jpg" alt="Memoria RAM">
+                <h3>Memoria RAM</h3>
+                <button class="boton">Ver más</button>
+            </div>
+            <div class="producto">
+                <img src="img/almacenamiento.jpg" alt="Almacenamiento">
+                <h3>Almacenamiento SSD</h3>
+                <button class="boton">Ver más</button>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="img/logo.png" alt="Logo">
+                <p>¡Los expertos en Tecnología!</p>
+                <a href="mailto:monterogaming7@gmail.com">
+                    📩 monterogaming7@gmail.com
+                </a>
+            </div>
+    
+            <div class="footer-links">
+                <div>
+                    <h3>INFORMACIÓN</h3>
+                    <a href="#">Nuestras Tiendas</a>
+                    <a href="#">Sobre Nosotros</a>
+                    <a href="#">Guía para padres</a>
+                </div>
+                <div>
+                    <h3>CLIENTES</h3>
+                    <a href="#">Garantía</a>
+                    <a href="#">Locales Autorizados</a>
+                    <a href="#">Mi cuenta</a>
+                    <a href="#">Libro de reclamaciones</a>
+                </div>
+                <div>
+                    <h3>POLÍTICAS</h3>
+                    <a href="#">Términos y Condiciones</a>
+                    <a href="#">Política de Cookies</a>
+                    <a href="#">Política de Privacidad</a>
+                </div>
+            </div>
+    
+            <div class="footer-map">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7803.612490670372!2d-77.0482577!3d-12.0568483!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c8c6a3c4c7fb%3A0xc430f8381598c595!2sMM%20STORE%20PERU!5e0!3m2!1ses!2spe!4v1740441196573!5m2!1ses!2spe"
+                    width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    
+        <div class="footer-social">
+            <p>Síguenos en:</p>
+            <a href="https://www.facebook.com/DiegoMY.54943/" target="_blank">
+                <img src="img/fblogo.png" alt="Facebook">
+            </a>
+            <a href="https://www.tiktok.com/@diego.my?is_from_webapp=1&sender_device=pc" target="_blank">
+                <img src="img/tiktoklogo.png" alt="TikTok">
+            </a>
+            <a href="https://www.instagram.com/diegomy.07/" target="_blank">
+                <img src="img/iglogo.png" alt="Instagram">
+            </a>
+            <a href="https://www.youtube.com/@diegomontero4842" target="_blank">
+                <img src="img/ytlogo.png" alt="YouTube">
+            </a>
+            <a href="https://www.whatsapp.com/?lang=es_LA" target="_blank">
+                <img src="img/wsplogo.png" alt="WhatsApp">
+            </a>
+        </div>
+    </footer>
+    
+    
+    <script src="script.js"></script>
+</body>
+</html>
